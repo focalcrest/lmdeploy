@@ -41,6 +41,7 @@ private:
     void sm70_884_4();
     void sm70_884_8();
     void sm70_884_16();
+    void sm70_884_u8();
 
     void sm90_64n32_8();
 
