@@ -156,6 +156,14 @@ std::array<const LayoutConverter*, 2> GetConverters(DataType data_type,
         // clang-format on
     }
 
+    if (weight_type == kInt8) {
+        constexpr Cvt<int8_t, int8_t>      W;  // int8     weight
+        constexpr Cvt<uint16_t, uint16_t>  S;  // f16      scales
+        // clang-format off
+        if (sm >= 70) return {W(sm70, kRow,   s884h | B | _1), S(sm70, kCol,   s884h | V | _1)};
+        // clang-format on
+    }
+
     TM_CHECK(0) << "Invalid combination: " << sm << " " << data_type << " " << weight_type << " " << input_type << " "
                 << grouped;
 
